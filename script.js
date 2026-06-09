@@ -1,85 +1,111 @@
 (function() {
-    var ventInput = document.getElementById('ventInput');
-    var submitBtn = document.getElementById('submitBtn');
-    var typingIndicator = document.getElementById('typing-indicator');
-    var responseContainer = document.getElementById('response-container');
-    var responseText = document.getElementById('responseText');
-    var historySection = document.getElementById('historySection');
-    var historyList = document.getElementById('historyList');
+    var ventInput = document.getElementById("ventInput");
+    var submitBtn = document.getElementById("submitBtn");
+    var typingIndicator = document.getElementById("typing-indicator");
+    var responseContainer = document.getElementById("response-container");
+    var responseText = document.getElementById("responseText");
+    var historySection = document.getElementById("historySection");
+    var historyList = document.getElementById("historyList");
 
     var history = [];
 
-    // Initialize History
-    try {
-        var stored = localStorage.getItem('fadfed_history');
-        if (stored) {
-            history = JSON.parse(stored);
+    // Bulletproof localStorage check for Safari Private Mode
+    function isLocalStorageAvailable() {
+        var test = "test";
+        try {
+            localStorage.setItem(test, test);
+            localStorage.removeItem(test);
+            return true;
+        } catch(e) {
+            return false;
         }
-    } catch (e) {
-        console.log('LocalStorage unavailable, using in-memory state');
+    }
+
+    var storageAvailable = isLocalStorageAvailable();
+
+    // Initialize History
+    if (storageAvailable) {
+        try {
+            var stored = localStorage.getItem("fadfed_history");
+            if (stored) {
+                history = JSON.parse(stored);
+            }
+        } catch (e) {
+            history = [];
+        }
     }
 
     function cleanupHistory() {
-        var now = Date.now();
+        var now = new Date().getTime();
         var oneDay = 24 * 60 * 60 * 1000;
         var modified = false;
+        var newHistory = [];
         
-        history = history.filter(function(item) {
-            var keep = (now - item.timestamp) < oneDay;
-            if (!keep) modified = true;
-            return keep;
-        });
+        for (var i = 0; i < history.length; i++) {
+            var item = history[i];
+            if ((now - item.timestamp) < oneDay) {
+                newHistory.push(item);
+            } else {
+                modified = true;
+            }
+        }
+        
+        history = newHistory;
 
         if (modified) saveHistory();
         renderHistory();
     }
 
     function saveHistory() {
-        try {
-            localStorage.setItem('fadfed_history', JSON.stringify(history));
-        } catch (e) {}
+        if (storageAvailable) {
+            try {
+                localStorage.setItem("fadfed_history", JSON.stringify(history));
+            } catch (e) {}
+        }
     }
 
     function formatTimeRemaining(timestamp) {
-        var now = Date.now();
+        var now = new Date().getTime();
         var diff = (24 * 60 * 60 * 1000) - (now - timestamp);
-        if (diff <= 0) return 'تدمير الآن';
+        if (diff <= 0) return "تدمير الآن";
         
         var hours = Math.floor(diff / (1000 * 60 * 60));
         var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         
         if (hours > 0) {
-            return 'تدمير ذاتي بعد ' + hours + ' ساعة و ' + mins + ' دقيقة';
+            return "تدمير ذاتي بعد " + hours + " ساعة و " + mins + " دقيقة";
         }
-        return 'تدمير ذاتي بعد ' + mins + ' دقيقة';
+        return "تدمير ذاتي بعد " + mins + " دقيقة";
     }
 
     function renderHistory() {
+        if (!historySection || !historyList) return;
+        
         if (history.length === 0) {
-            historySection.style.display = 'none';
+            historySection.style.display = "none";
             return;
         }
 
-        historySection.style.display = 'block';
-        historyList.innerHTML = '';
+        historySection.style.display = "block";
+        historyList.innerHTML = "";
 
         // Show newest first
         for (var i = history.length - 1; i >= 0; i--) {
             var item = history[i];
-            var card = document.createElement('div');
-            card.className = 'history-card';
+            var card = document.createElement("div");
+            card.className = "history-card";
             
-            var ventDiv = document.createElement('div');
-            ventDiv.className = 'vent-content';
-            ventDiv.innerText = item.vent;
+            var ventDiv = document.createElement("div");
+            ventDiv.className = "vent-content";
+            ventDiv.appendChild(document.createTextNode(item.vent));
             
-            var roastDiv = document.createElement('div');
-            roastDiv.className = 'roast-content';
-            roastDiv.innerText = 'بوك: ' + item.roast;
+            var roastDiv = document.createElement("div");
+            roastDiv.className = "roast-content";
+            roastDiv.appendChild(document.createTextNode("بوك: " + item.roast));
             
-            var timerSpan = document.createElement('span');
-            timerSpan.className = 'self-destruct-timer';
-            timerSpan.innerText = '⏳ ' + formatTimeRemaining(item.timestamp);
+            var timerSpan = document.createElement("span");
+            timerSpan.className = "self-destruct-timer";
+            timerSpan.appendChild(document.createTextNode("⏳ " + formatTimeRemaining(item.timestamp)));
             
             card.appendChild(ventDiv);
             card.appendChild(roastDiv);
@@ -109,45 +135,47 @@
         ]
     };
 
-    submitBtn.onclick = function() {
-        var text = ventInput.value.trim();
-        if (!text) return;
+    if (submitBtn) {
+        submitBtn.onclick = function() {
+            var text = ventInput.value.trim();
+            if (!text) return;
 
-        submitBtn.disabled = true;
-        responseContainer.style.display = 'none';
-        typingIndicator.style.display = 'block';
+            submitBtn.disabled = true;
+            if (responseContainer) responseContainer.style.display = "none";
+            if (typingIndicator) typingIndicator.style.display = "block";
 
-        var delay = 1500 + (Math.random() * 2000);
+            var delay = 1500 + (Math.random() * 2000);
 
-        setTimeout(function() {
-            var selectedRoast = "";
-            var lowerText = text.toLowerCase();
+            setTimeout(function() {
+                var selectedRoast = "";
+                var lowerText = text.toLowerCase();
 
-            if (lowerText.indexOf("طفران") !== -1 || lowerText.indexOf("فلوس") !== -1 || lowerText.indexOf("وظيفة") !== -1 || lowerText.indexOf("رصيد") !== -1) {
-                selectedRoast = roasts.money[Math.floor(Math.random() * roasts.money.length)];
-            } else if (lowerText.indexOf("نيكوتين") !== -1 || lowerText.indexOf("دزرت") !== -1 || lowerText.indexOf("desert") !== -1 || lowerText.indexOf("سجائر") !== -1) {
-                selectedRoast = roasts.nicotine[Math.floor(Math.random() * roasts.nicotine.length)];
-            } else {
-                selectedRoast = roasts.general[Math.floor(Math.random() * roasts.general.length)];
-            }
+                if (lowerText.indexOf("طفران") !== -1 || lowerText.indexOf("فلوس") !== -1 || lowerText.indexOf("وظيفة") !== -1 || lowerText.indexOf("رصيد") !== -1) {
+                    selectedRoast = roasts.money[Math.floor(Math.random() * roasts.money.length)];
+                } else if (lowerText.indexOf("نيكوتين") !== -1 || lowerText.indexOf("دزرت") !== -1 || lowerText.indexOf("desert") !== -1 || lowerText.indexOf("سجائر") !== -1) {
+                    selectedRoast = roasts.nicotine[Math.floor(Math.random() * roasts.nicotine.length)];
+                } else {
+                    selectedRoast = roasts.general[Math.floor(Math.random() * roasts.general.length)];
+                }
 
-            typingIndicator.style.display = 'none';
-            responseText.innerText = selectedRoast;
-            responseContainer.style.display = 'block';
-            
-            // Add to History
-            history.push({
-                vent: text,
-                roast: selectedRoast,
-                timestamp: Date.now()
-            });
-            saveHistory();
-            renderHistory();
+                if (typingIndicator) typingIndicator.style.display = "none";
+                if (responseText) responseText.innerText = selectedRoast;
+                if (responseContainer) responseContainer.style.display = "block";
+                
+                // Add to History
+                history.push({
+                    vent: text,
+                    roast: selectedRoast,
+                    timestamp: new Date().getTime()
+                });
+                saveHistory();
+                renderHistory();
 
-            ventInput.value = "";
-            submitBtn.disabled = false;
-        }, delay);
-    };
+                if (ventInput) ventInput.value = "";
+                submitBtn.disabled = false;
+            }, delay);
+        };
+    }
 
     // Initial Load
     cleanupHistory();
