@@ -1,61 +1,156 @@
-KGZ1bmN0aW9uKCkgewogICAgdmFyIHZlbnRJbnB1dCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlk
-KCd2ZW50SW5wdXQnKTsKICAgIHZhciBzdWJtaXRCdG4gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJ
-ZCgnc3VibWl0QnRuJyk7CiAgICB2YXIgdHlwaW5nSW5kaWNhdG9yID0gZG9jdW1lbnQuZ2V0RWxl
-bWVudEJ5SWQoJ3R5cGluZy1pbmRpY2F0b3InKTsKICAgIHZhciByZXNwb25zZUNvbnRhaW5lciA9
-IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyZXNwb25zZS1jb250YWluZXInKTsKICAgIHZhciBy
-ZXNwb25zZVRleHQgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncmVzcG9uc2VUZXh0Jyk7Cgog
-ICAgdmFyIHJvYXN0cyA9IHsKICAgICAgICBtb25leTogWwogICAgICAgICAgICAi2KPZgtmI2YQg
-2YLZhSDYqNizINmC2YUg2YjZhtmF2Iwg2KfZhNmH2YjYp9is2YrYsyDZh9iw2Yog2YXYpyDYqNiq
-2LPYr9ivINmB2KfYqtmI2LHYqSDYrNmI2KfZhNmDINio2YPYsdinINmH2YfZh9mH2YfZhyIsCiAg
-ICAgICAgICAgICLYt9mB2LHYp9mG2J8g2YjYp9mE2YTZhyDZhNmIINiq2YHYttmB2LYg2YTZhNi1
-2KjYrSDZhdinINio2YrYt9mE2Lkg2YTZgyDYqtmF2YjZitmEINmF2YYg2KfZhNmAIFBJRtiMINix
-2K0g2K/ZiNixINmE2YMg2YjYuNmK2YHYqSDYo9iy2YrZhiDZhNmDIiwKICAgICAgICAgICAgItix
-2LXZitiv2YMgMS41INix2YrYp9mEINmI2KrZgdmD2LEg2YHZiiDYp9iz2KrYq9mF2KfYsdin2KrY
-nyDZitinINix2KzZhCDYsditINin2LTYqtixINmE2YMg2K7YqNiyINi12KfZhdmI2YTZiiDZiNmG
-2YUg2KjYsyIsCiAgICAgICAgICAgICLYtNmD2YTZgyDYqtiv2YjYsSDYqtmF2YjZitmEINis2LHZ
-itih2J8g2KfZhNis2LHYo9ipINmH2Yog2KXZhtmDINmE2YTYrdmK2YYg2LXYp9it2Yog2YjYqtmB
-2YPYsSDYqNmB2YTZiNizINmI2KPZhtiqINmF2Kcg2YXYudmDINit2YIg2KfZhNi52LTYpyIKICAg
-ICAgICBdLAogICAgICAgIG5pY290aW5lOiBbCiAgICAgICAgICAgICLYrtmE2LUg2LnZhNmK2YMg
-2KfZhNmAIERlc2VydCDZiNi22KfZgiDYtdiv2LHZg9ifINmC2KfZitmEINmE2YMg2K7ZgdmBINmF
-2YbZh9iMINmH2LDZiiDYrdmI2KjYqSDYp9mE2YTZiiDZitiu2YTYtSDYp9mE2LnZhNio2Kkg2YHZ
-iiDZitmI2YUiLAogICAgICAgICAgICAi2KPYr9ix2Yog2KfZhNmH2YjYp9is2YrYsyDYstin2K/Y
-qiDYudi02KfZhiDYp9mE2YbZitmD2YjYqtmK2YYg2YbYp9mC2LUuLiDYsditINmG2YUg2YjYqNmD
-2LHYpyDZitit2YTZh9inINit2YTYp9mEItiMCiAgICAgICAgICAgICLYtNmD2YTZgyDZiNin2LXZ
-hCDZhdix2K3ZhNipINiq2K/ZiNixINmD2YrYsyDZgdmKINin2YTYs9mK2KfYsdipLi4g2YLZhSDZ
-htmFINio2LMg2YjYp9iq2LHZgyDYudmG2YMg2KfZhNiv2LHYp9mF2KciCiAgICAgICAgXSwKICAg
-ICAgICBnZW5lcmFsOiBbCiAgICAgICAgICAgICLYo9mC2YjZhCDZgtmFINmG2YUg2KjYs9iMINmE
-2Kcg2LXYsdiqINmI2LLZitixINiu2KjYsdmG2Yog2LnYtNin2YYg2KPZh9iq2YUg2KjZhdi02KfZ
-g9mE2YMiLAogICAgICAgICAgICAi2YHYttmB2LbYqtmDINmH2LDZiiDZitio2YrZhNmH2Kcg2KzZ
-hNiz2Kkg2LTYp9mKINis2YXYsdiMINio2LMg2KfZhNit2YrZhiDZiNmC2Kog2YbZiNmFINmK2Kcg
-2KjYt9mEIiwKICAgICAgICAgICAgItiq2LHYpyDZhdit2K8g2K/YsdmJINi52YbZg9iMINmC2YUg
-2YbZhSDZiNio2YPYsdinINiq2LbYrdmDINi52YTZiSDZh9io2KfZhNmDINmH2LDYpyIsCiAgICAg
-ICAgICAgICLYp9mE2YfZiNin2KzZitizINmG2LUg2KfZhNmE2YrZhCDZhdinINmI2LHYp9mH2Kcg
-2KXZhNinINmI2KzYuSDYp9mE2LHYp9iz2Iwg2KfYqtix2YMg2KfZhNis2YjYp9mEINmI2YbZhSIs
-CiAgICAgICAgICAgICLYo9mG2Kog2KfZhNit2YrZhiDYqtit2LMg2KXZhtmDINmB2Yog2YHZhNmF
-INiv2LHYp9mF2YrYjCBYqNmD2LHYpyDYqNiq2YLZiNmFINmI2KrYtNmI2YEg2KXZhtmDINmD2YbY
-qiDYs9io2YrZg9ip2Iwg2YbZhSDYqNizINmG2YUiCiAgICAgICAgXQogICAgfTsKCiAgICBzdWJt
-aXRCdG4ub25jbGljayA9IGZ1bmN0aW9uKCkgewogICAgICAgIHZhciB0ZXh0ID0gdmVudElucHV0
-LnZhbHVlLnRyaW0oKTsKICAgICAgICBpZiAoIXRleHQpIHJldHVybjsKCiAgICAgICAgc3VibWl0
-QnRuLmRpc2FibGVkID0gdHJ1ZTsKICAgICAgICByZXNwb25zZUNvbnRhaW5lci5zdHlsZS5kaXNw
-bGF5ID0gJ25vbmUnOwogICAgICAgIHR5cGluZ0luZGljYXRvci5zdHlsZS5kaXNwbGF5ID0gJ2Js
-b2NrJzsKCiAgICAgICAgdmFyIGRlbGF5ID0gMTUwMCArIChNYXRoLnJhbmRvbSgpICogMjAwMCk7
-CgogICAgICAgIHNldFRpbWVvdXQoZnVuY3Rpb24oKSB7CiAgICAgICAgICAgIHZhciBzZWxlY3Rl
-ZFJvYXN0ID0gIiI7CiAgICAgICAgICAgIHZhciBsb3dlclRleHQgPSB0ZXh0LnRvTG93ZXJDYXNl
-KCk7CgogICAgICAgICAgICBpZiAobG93ZXJUZXh0LmluZGV4T2YoIti32YHYsdin2YYiKSAhPT0g
-LTEgfHwgbG93ZXJUZXh0LmluZGV4T2YoItmB2YTZiNizIikgIT09IC0xIHx8IGxvd2VyVGV4dC5p
-bmRleE9mKCLZiNi42YrZgdipIikgIT09IC0xIHx8IGxvd2VyVGV4dC5pbmRleE9mKCLYsdi12YrY
-ryIpICE9PSAtMSkgewogICAgICAgICAgICAgICAgc2VsZWN0ZWRSb2FzdCA9IHJvYXN0cy5tb25l
-eVtNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiByb2FzdHMubW9uZXkubGVuZ3RoKV07CiAgICAg
-ICAgICAgIH0gZWxzZSBpZiAobG93ZXJUZXh0LmluZGV4T2YoItmG2YrZg9mI2KrZitmGIikgIT09
-IC0xIHx8IGxvd2VyVGV4dC5pbmRleE9mKCLYr9iy2LHYqiIpICE9PSAtMSB8fCBsb3dlclRleHQu
-aW5kZXhPZigiZGVzZXJ0IikgIT09IC0xIHx8IGxvd2VyVGV4dC5pbmRleE9mKCLYs9is2KfYptix
-IikgIT09IC0xKSB7CiAgICAgICAgICAgICAgICBzZWxlY3RlZFJvYXN0ID0gcm9hc3RzLm5pY290
-aW5lW01hdGguZmxvb3IoTWF0aC5yYW5kb20oKSAqIHJvYXN0cy5uaWNvdGluZS5sZW5ndGgpXTsK
-ICAgICAgICAgICAgfSBlbHNlIHsKICAgICAgICAgICAgICAgIHNlbGVjdGVkUm9hc3QgPSByb2Fz
-dHMuZ2VuZXJhbFtNYXRoLmZsb29yKE1hdGgucmFuZG9tKCkgKiByb2FzdHMuZ2VuZXJhbC5sZW5n
-dGgpXTsKICAgICAgICAgICAgfQoKICAgICAgICAgICAgdHlwaW5nSW5kaWNhdG9yLnN0eWxlLmRp
-c3BsYXkgPSAnbm9uZSc7CiAgICAgICAgICAgIHJlc3BvbnNlVGV4dC5pbm5lclRleHQgPSBzZWxl
-Y3RlZFJvYXN0OwogICAgICAgICAgICByZXNwb25zZUNvbnRhaW5lci5zdHlsZS5kaXNwbGF5ID0g
-J2Jsb2NrJzsKICAgICAgICAgICAgdmVudElucHV0LnZhbHVlID0gIiI7CiAgICAgICAgICAgIHN1
-Ym1pdEJ0bi5kaXNhYmxlZCA9IGZhbHNlOwogICAgICAgIH0sIGRlbGF5KTsKICAgIH07Cn0pKCk7
-Cg==
+(function() {
+    var ventInput = document.getElementById('ventInput');
+    var submitBtn = document.getElementById('submitBtn');
+    var typingIndicator = document.getElementById('typing-indicator');
+    var responseContainer = document.getElementById('response-container');
+    var responseText = document.getElementById('responseText');
+    var historySection = document.getElementById('historySection');
+    var historyList = document.getElementById('historyList');
+
+    var history = [];
+
+    // Initialize History
+    try {
+        var stored = localStorage.getItem('fadfed_history');
+        if (stored) {
+            history = JSON.parse(stored);
+        }
+    } catch (e) {
+        console.log('LocalStorage unavailable, using in-memory state');
+    }
+
+    function cleanupHistory() {
+        var now = Date.now();
+        var oneDay = 24 * 60 * 60 * 1000;
+        var modified = false;
+        
+        history = history.filter(function(item) {
+            var keep = (now - item.timestamp) < oneDay;
+            if (!keep) modified = true;
+            return keep;
+        });
+
+        if (modified) saveHistory();
+        renderHistory();
+    }
+
+    function saveHistory() {
+        try {
+            localStorage.setItem('fadfed_history', JSON.stringify(history));
+        } catch (e) {}
+    }
+
+    function formatTimeRemaining(timestamp) {
+        var now = Date.now();
+        var diff = (24 * 60 * 60 * 1000) - (now - timestamp);
+        if (diff <= 0) return 'تدمير الآن';
+        
+        var hours = Math.floor(diff / (1000 * 60 * 60));
+        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        
+        if (hours > 0) {
+            return 'تدمير ذاتي بعد ' + hours + ' ساعة و ' + mins + ' دقيقة';
+        }
+        return 'تدمير ذاتي بعد ' + mins + ' دقيقة';
+    }
+
+    function renderHistory() {
+        if (history.length === 0) {
+            historySection.style.display = 'none';
+            return;
+        }
+
+        historySection.style.display = 'block';
+        historyList.innerHTML = '';
+
+        // Show newest first
+        for (var i = history.length - 1; i >= 0; i--) {
+            var item = history[i];
+            var card = document.createElement('div');
+            card.className = 'history-card';
+            
+            var ventDiv = document.createElement('div');
+            ventDiv.className = 'vent-content';
+            ventDiv.innerText = item.vent;
+            
+            var roastDiv = document.createElement('div');
+            roastDiv.className = 'roast-content';
+            roastDiv.innerText = 'بوك: ' + item.roast;
+            
+            var timerSpan = document.createElement('span');
+            timerSpan.className = 'self-destruct-timer';
+            timerSpan.innerText = '⏳ ' + formatTimeRemaining(item.timestamp);
+            
+            card.appendChild(ventDiv);
+            card.appendChild(roastDiv);
+            card.appendChild(timerSpan);
+            historyList.appendChild(card);
+        }
+    }
+
+    var roasts = {
+        money: [
+            "أقول قم بس قم ونم، الهواجيس هذه ما بتسدد فاتورة جوالك بكرا هههههه",
+            "طفران؟ وش الجديد.. الرصيد 1.5 ريال وتفكر في PIF؟ رح نم بس",
+            "تطلب تمويل من الـ VC وأنت حتى حق علبة موية ما عندك؟ كثر منها",
+            "خذلك سلفة من مخدتك أبرك لك من هالسوالف"
+        ],
+        nicotine: [
+            "خلصت الـ Desert وقمت تفضفض؟ رح اطلب لك وحدة ثانية وريحنا",
+            "النيكوتين لاعب في حسبتك.. رح نم وخل الهواجيس لأهلها",
+            "تدور نيكوتين في نص الليل؟ هذا اللي ناقصنا والله"
+        ],
+        general: [
+            "أقول قم بس قم ونم، الهواجيس هذي ما بتسدد فاتورة جوالك بكرا هههههه",
+            "فضفض فضفض.. جالس أسمعك وأضحك عليك بنفس الوقت",
+            "ترا محد مهتم، رح نم وبكرا يحلها ألف حلال",
+            "هواجيس الليل هذي علاجها الفراش وبس.. فارقنا",
+            "جالس تسولف لي وأنت تدري إني بجحدك بكرا؟"
+        ]
+    };
+
+    submitBtn.onclick = function() {
+        var text = ventInput.value.trim();
+        if (!text) return;
+
+        submitBtn.disabled = true;
+        responseContainer.style.display = 'none';
+        typingIndicator.style.display = 'block';
+
+        var delay = 1500 + (Math.random() * 2000);
+
+        setTimeout(function() {
+            var selectedRoast = "";
+            var lowerText = text.toLowerCase();
+
+            if (lowerText.indexOf("طفران") !== -1 || lowerText.indexOf("فلوس") !== -1 || lowerText.indexOf("وظيفة") !== -1 || lowerText.indexOf("رصيد") !== -1) {
+                selectedRoast = roasts.money[Math.floor(Math.random() * roasts.money.length)];
+            } else if (lowerText.indexOf("نيكوتين") !== -1 || lowerText.indexOf("دزرت") !== -1 || lowerText.indexOf("desert") !== -1 || lowerText.indexOf("سجائر") !== -1) {
+                selectedRoast = roasts.nicotine[Math.floor(Math.random() * roasts.nicotine.length)];
+            } else {
+                selectedRoast = roasts.general[Math.floor(Math.random() * roasts.general.length)];
+            }
+
+            typingIndicator.style.display = 'none';
+            responseText.innerText = selectedRoast;
+            responseContainer.style.display = 'block';
+            
+            // Add to History
+            history.push({
+                vent: text,
+                roast: selectedRoast,
+                timestamp: Date.now()
+            });
+            saveHistory();
+            renderHistory();
+
+            ventInput.value = "";
+            submitBtn.disabled = false;
+        }, delay);
+    };
+
+    // Initial Load
+    cleanupHistory();
+    // Refresh timers every minute
+    setInterval(cleanupHistory, 60000);
+})();
