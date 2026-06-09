@@ -1,184 +1,85 @@
-(function() {
-    var ventInput = document.getElementById("ventInput");
-    var submitBtn = document.getElementById("submitBtn");
-    var typingIndicator = document.getElementById("typing-indicator");
-    var responseContainer = document.getElementById("response-container");
-    var responseText = document.getElementById("responseText");
-    var historySection = document.getElementById("historySection");
-    var historyList = document.getElementById("historyList");
+window.onerror = function(msg, url, lineNo, columnNo, error) {
+    var diag = document.getElementById("error-diag");
+    if (diag) {
+        diag.style.display = "block";
+        diag.innerHTML = "Error: " + msg + " at " + lineNo + ":" + columnNo;
+    }
+    return false;
+};
+
+window.onload = function() {
+    var input = document.getElementById("input");
+    var btn = document.getElementById("btn");
+    var res = document.getElementById("response");
+    var histDiv = document.getElementById("history");
 
     var history = [];
+    var storageOK = false;
 
-    // Bulletproof localStorage check for Safari Private Mode
-    function isLocalStorageAvailable() {
-        var test = "test";
+    try {
+        var test = "t";
+        localStorage.setItem(test, test);
+        localStorage.removeItem(test);
+        storageOK = true;
+    } catch (e) {}
+
+    if (storageOK) {
         try {
-            localStorage.setItem(test, test);
-            localStorage.removeItem(test);
-            return true;
-        } catch(e) {
-            return false;
-        }
+            var data = localStorage.getItem("fadfed_v2");
+            if (data) history = JSON.parse(data);
+        } catch (e) {}
     }
 
-    var storageAvailable = isLocalStorageAvailable();
-
-    // Initialize History
-    if (storageAvailable) {
+    function save() {
+        if (!storageOK) return;
         try {
-            var stored = localStorage.getItem("fadfed_history");
-            if (stored) {
-                history = JSON.parse(stored);
-            }
-        } catch (e) {
-            history = [];
-        }
+            localStorage.setItem("fadfed_v2", JSON.stringify(history));
+        } catch (e) {}
     }
 
-    function cleanupHistory() {
+    function render() {
+        histDiv.innerHTML = "";
         var now = new Date().getTime();
-        var oneDay = 24 * 60 * 60 * 1000;
-        var modified = false;
-        var newHistory = [];
-        
-        for (var i = 0; i < history.length; i++) {
-            var item = history[i];
-            if ((now - item.timestamp) < oneDay) {
-                newHistory.push(item);
-            } else {
-                modified = true;
-            }
-        }
-        
-        history = newHistory;
+        var day = 24 * 60 * 60 * 1000;
+        var clean = [];
 
-        if (modified) saveHistory();
-        renderHistory();
-    }
-
-    function saveHistory() {
-        if (storageAvailable) {
-            try {
-                localStorage.setItem("fadfed_history", JSON.stringify(history));
-            } catch (e) {}
-        }
-    }
-
-    function formatTimeRemaining(timestamp) {
-        var now = new Date().getTime();
-        var diff = (24 * 60 * 60 * 1000) - (now - timestamp);
-        if (diff <= 0) return "تدمير الآن";
-        
-        var hours = Math.floor(diff / (1000 * 60 * 60));
-        var mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        
-        if (hours > 0) {
-            return "تدمير ذاتي بعد " + hours + " ساعة و " + mins + " دقيقة";
-        }
-        return "تدمير ذاتي بعد " + mins + " دقيقة";
-    }
-
-    function renderHistory() {
-        if (!historySection || !historyList) return;
-        
-        if (history.length === 0) {
-            historySection.style.display = "none";
-            return;
-        }
-
-        historySection.style.display = "block";
-        historyList.innerHTML = "";
-
-        // Show newest first
         for (var i = history.length - 1; i >= 0; i--) {
             var item = history[i];
-            var card = document.createElement("div");
-            card.className = "history-card";
-            
-            var ventDiv = document.createElement("div");
-            ventDiv.className = "vent-content";
-            ventDiv.appendChild(document.createTextNode(item.vent));
-            
-            var roastDiv = document.createElement("div");
-            roastDiv.className = "roast-content";
-            roastDiv.appendChild(document.createTextNode("بوك: " + item.roast));
-            
-            var timerSpan = document.createElement("span");
-            timerSpan.className = "self-destruct-timer";
-            timerSpan.appendChild(document.createTextNode("⏳ " + formatTimeRemaining(item.timestamp)));
-            
-            card.appendChild(ventDiv);
-            card.appendChild(roastDiv);
-            card.appendChild(timerSpan);
-            historyList.appendChild(card);
+            if (now - item.t < day) {
+                clean.push(item);
+                var div = document.createElement("div");
+                div.className = "card";
+                div.innerHTML = "<div>" + item.v + "</div><div style='color:#fbbf24'>بوك: " + item.r + "</div>";
+                var rem = Math.floor((day - (now - item.t)) / 60000);
+                var t = document.createElement("div");
+                t.className = "timer";
+                t.innerHTML = "تدمير بعد " + rem + " دقيقة";
+                div.appendChild(t);
+                histDiv.appendChild(div);
+            }
         }
+        history = clean.reverse();
+        save();
     }
 
-    var roasts = {
-        money: [
-            "أقول قم بس قم ونم، الهواجيس هذه ما بتسدد فاتورة جوالك بكرا هههههه",
-            "طفران؟ وش الجديد.. الرصيد 1.5 ريال وتفكر في PIF؟ رح نم بس",
-            "تطلب تمويل من الـ VC وأنت حتى حق علبة موية ما عندك؟ كثر منها",
-            "خذلك سلفة من مخدتك أبرك لك من هالسوالف"
-        ],
-        nicotine: [
-            "خلصت الـ Desert وقمت تفضفض؟ رح اطلب لك وحدة ثانية وريحنا",
-            "النيكوتين لاعب في حسبتك.. رح نم وخل الهواجيس لأهلها",
-            "تدور نيكوتين في نص الليل؟ هذا اللي ناقصنا والله"
-        ],
-        general: [
-            "أقول قم بس قم ونم، الهواجيس هذي ما بتسدد فاتورة جوالك بكرا هههههه",
-            "فضفض فضفض.. جالس أسمعك وأضحك عليك بنفس الوقت",
-            "ترا محد مهتم، رح نم وبكرا يحلها ألف حلال",
-            "هواجيس الليل هذي علاجها الفراش وبس.. فارقنا",
-            "جالس تسولف لي وأنت تدري إني بجحدك بكرا؟"
-        ]
+    btn.onclick = function() {
+        var val = input.value.trim();
+        if (!val) return;
+        btn.disabled = true;
+        res.style.display = "block";
+        res.innerHTML = "بوك يفكر...";
+
+        setTimeout(function() {
+            var r = "أقول قم بس قم ونم، الهواجيس هذه ما بتسدد فاتورة جوالك بكرا هههههه";
+            res.innerHTML = "بوك: " + r;
+            history.push({v: val, r: r, t: new Date().getTime()});
+            save();
+            render();
+            input.value = "";
+            btn.disabled = false;
+        }, 1000);
     };
 
-    if (submitBtn) {
-        submitBtn.onclick = function() {
-            var text = ventInput.value.trim();
-            if (!text) return;
-
-            submitBtn.disabled = true;
-            if (responseContainer) responseContainer.style.display = "none";
-            if (typingIndicator) typingIndicator.style.display = "block";
-
-            var delay = 1500 + (Math.random() * 2000);
-
-            setTimeout(function() {
-                var selectedRoast = "";
-                var lowerText = text.toLowerCase();
-
-                if (lowerText.indexOf("طفران") !== -1 || lowerText.indexOf("فلوس") !== -1 || lowerText.indexOf("وظيفة") !== -1 || lowerText.indexOf("رصيد") !== -1) {
-                    selectedRoast = roasts.money[Math.floor(Math.random() * roasts.money.length)];
-                } else if (lowerText.indexOf("نيكوتين") !== -1 || lowerText.indexOf("دزرت") !== -1 || lowerText.indexOf("desert") !== -1 || lowerText.indexOf("سجائر") !== -1) {
-                    selectedRoast = roasts.nicotine[Math.floor(Math.random() * roasts.nicotine.length)];
-                } else {
-                    selectedRoast = roasts.general[Math.floor(Math.random() * roasts.general.length)];
-                }
-
-                if (typingIndicator) typingIndicator.style.display = "none";
-                if (responseText) responseText.innerText = selectedRoast;
-                if (responseContainer) responseContainer.style.display = "block";
-                
-                // Add to History
-                history.push({
-                    vent: text,
-                    roast: selectedRoast,
-                    timestamp: new Date().getTime()
-                });
-                saveHistory();
-                renderHistory();
-
-                if (ventInput) ventInput.value = "";
-                submitBtn.disabled = false;
-            }, delay);
-        };
-    }
-
-    // Initial Load
-    cleanupHistory();
-    // Refresh timers every minute
-    setInterval(cleanupHistory, 60000);
-})();
+    render();
+    setInterval(render, 60000);
+};
