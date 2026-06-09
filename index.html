@@ -2,19 +2,20 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
     <title>فضفض لي وروح نام</title>
     <style>
         body {
             background-color: #0b0f19;
             color: #e5e7eb;
-            font-family: sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            -webkit-text-size-adjust: 100%;
         }
         #error-diag {
             display: none;
@@ -31,7 +32,7 @@
             direction: ltr;
         }
         .container { width: 100%; max-width: 500px; }
-        h1 { color: #10b981; }
+        h1 { color: #10b981; margin-top: 20px; }
         textarea {
             width: 100%;
             background: #1f2937;
@@ -41,6 +42,10 @@
             padding: 15px;
             height: 150px;
             margin-bottom: 20px;
+            font-size: 16px; /* Prevents auto-zoom on iOS */
+            box-sizing: border-box;
+            appearance: none;
+            -webkit-appearance: none;
         }
         button {
             background: #10b981;
@@ -50,11 +55,15 @@
             border-radius: 30px;
             font-weight: bold;
             width: 100%;
+            font-size: 18px;
+            cursor: pointer;
+            -webkit-appearance: none;
         }
-        #response { display: none; margin-top: 20px; color: #fbbf24; font-weight: bold; }
+        button:disabled { opacity: 0.5; }
+        #response { display: none; margin-top: 20px; color: #fbbf24; font-weight: bold; padding: 10px; }
         .history { margin-top: 40px; width: 100%; }
-        .card { background: #1f2937; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-right: 4px solid #fbbf24; text-align: right; }
-        .timer { font-size: 11px; color: #10b981; }
+        .card { background: #1f2937; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-right: 4px solid #fbbf24; text-align: right; word-wrap: break-word; }
+        .timer { font-size: 11px; color: #10b981; margin-top: 5px; }
     </style>
 </head>
 <body>
