@@ -4,249 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>فضفض لي وروح نام</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #0b0f19;
-            --primary-color: #10b981; /* Saudi Emerald */
-            --accent-color: #fbbf24;  /* Saudi Gold */
-            --text-color: #e5e7eb;
-            --input-bg: #1f2937;
-        }
-
-        * {
-            box-sizing: border-box;
-            -webkit-tap-highlight-color: transparent;
-        }
-
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Noto Sans Arabic', sans-serif;
+            background-color: #0b0f19;
+            color: #e5e7eb;
+            font-family: sans-serif;
             margin: 0;
-            padding: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-
-        .container {
-            width: 100%;
-            max-width: 600px;
-            padding: 24px;
             text-align: center;
         }
-
-        .header {
-            margin-bottom: 40px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 8px;
-            text-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .encryption-badge {
-            display: inline-flex;
-            align-items: center;
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--primary-color);
-            padding: 8px 16px;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(16, 185, 129, 0.2);
+        #error-diag {
+            display: none;
+            background: #7f1d1d;
+            color: #fecaca;
+            padding: 10px;
+            border-radius: 8px;
             margin-bottom: 20px;
+            font-size: 12px;
+            width: 100%;
+            max-width: 500px;
+            word-break: break-all;
+            text-align: left;
+            direction: ltr;
         }
-
-        .privacy-text {
-            font-size: 0.8rem;
-            opacity: 0.6;
-            margin-bottom: 30px;
-        }
-
-        .input-wrapper {
-            position: relative;
-            margin-bottom: 24px;
-        }
-
+        .container { width: 100%; max-width: 500px; }
+        h1 { color: #10b981; }
         textarea {
             width: 100%;
-            background: var(--input-bg);
-            border: 2px solid rgba(251, 191, 36, 0.1);
-            border-radius: 24px;
+            background: #1f2937;
+            border: 1px solid #fbbf24;
+            border-radius: 12px;
             color: #fff;
-            padding: 24px;
-            font-size: 1.1rem;
-            resize: none;
-            height: 180px;
-            outline: none;
-            transition: border-color 0.3s;
-            font-family: inherit;
+            padding: 15px;
+            height: 150px;
+            margin-bottom: 20px;
         }
-
-        textarea:focus {
-            border-color: var(--accent-color);
-        }
-
-        .btn {
-            background-color: var(--primary-color);
+        button {
+            background: #10b981;
             color: #000;
             border: none;
-            padding: 18px 48px;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: transform 0.2s, background-color 0.2s;
-            width: 100%;
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        #typing-indicator {
-            display: none;
-            margin-top: 24px;
-            color: var(--accent-color);
-            font-style: italic;
-            font-weight: 300;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        #response-container {
-            margin-top: 40px;
-            padding: 24px;
-            background: rgba(251, 191, 36, 0.05);
-            border-radius: 24px;
-            border: 1px solid rgba(251, 191, 36, 0.1);
-            display: none;
-            text-align: right;
-            line-height: 1.6;
-        }
-
-        .poke-label {
-            display: block;
-            color: var(--accent-color);
-            font-weight: 700;
-            margin-bottom: 12px;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .response-text {
-            color: var(--accent-color);
-            font-size: 1.2rem;
-        }
-
-        /* History Section Styles */
-        .history-section {
-            margin-top: 60px;
-            text-align: right;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
             width: 100%;
         }
-
-        .history-title {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            padding-right: 10px;
-            border-right: 4px solid var(--primary-color);
-        }
-
-        .history-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .history-card {
-            background: rgba(31, 41, 55, 0.5);
-            border-radius: 20px;
-            padding: 20px;
-            border-right: 4px solid var(--accent-color);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .vent-content {
-            font-size: 0.95rem;
-            opacity: 0.8;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .roast-content {
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 1.05rem;
-        }
-
-        .self-destruct-timer {
-            display: block;
-            margin-top: 15px;
-            font-size: 0.75rem;
-            color: var(--primary-color);
-            opacity: 0.7;
-            font-style: italic;
-        }
-
-        .footer {
-            margin-top: auto;
-            padding: 40px 0;
-            font-size: 0.75rem;
-            opacity: 0.4;
-        }
+        #response { display: none; margin-top: 20px; color: #fbbf24; font-weight: bold; }
+        .history { margin-top: 40px; width: 100%; }
+        .card { background: #1f2937; padding: 15px; border-radius: 12px; margin-bottom: 10px; border-right: 4px solid #fbbf24; text-align: right; }
+        .timer { font-size: 11px; color: #10b981; }
     </style>
 </head>
 <body>
+    <div id="error-diag"></div>
     <div class="container">
-        <div class="header">
-            <h1>فضفض لي وروح نام</h1>
-            <div class="encryption-badge">
-                🔒 تدمير ذاتي آمن 100% بعد 24 ساعة
-            </div>
-            <p class="privacy-text">
-                محد يقدر يشوف كلامك غيرنا.. الفضفضة تختفي للأبد بعد يوم واحد.
-            </p>
-        </div>
-
-        <div class="input-wrapper">
-            <textarea id="ventInput" placeholder="وش اللي شاغل بالك؟ فضفض هنا..."></textarea>
-        </div>
-
-        <button id="submitBtn" class="btn">أرسل الفضفضة</button>
-
-        <div id="typing-indicator">بوك يفكر برّد يفرتك جبهتك...</div>
-
-        <div id="response-container">
-            <span class="poke-label">رد بوك:</span>
-            <div id="responseText" class="response-text"></div>
-        </div>
-
-        <div id="historySection" class="history-section" style="display: none;">
-            <h2 class="history-title">سجل الفضفضة (آخر 24 ساعة)</h2>
-            <div id="historyList" class="history-list"></div>
-        </div>
+        <h1>فضفض لي وروح نام</h1>
+        <textarea id="input" placeholder="وش اللي شاغل بالك؟"></textarea>
+        <button id="btn">أرسل الفضفضة</button>
+        <div id="response"></div>
+        <div class="history" id="history"></div>
     </div>
-
-    <div class="footer">
-        © 2026 فضفض لي - بوك بيخلي جبهتك ملح
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
